@@ -19,7 +19,7 @@ import { useForm } from "react-hook-form";
 
 const ShoppingCheckOut: React.FC = () => {
   const { toast } = useToast();
-  const [ setIsPaymentStart] = useState(false);
+  const [isPaymentStart, setIsPaymentStart] = useState(false);
   const { isLoading: PaymentLoading, approvalUrl } = useAppSelector(
     (state) => state.shoppingOrder
   );
@@ -63,6 +63,8 @@ const ShoppingCheckOut: React.FC = () => {
       console.log(error);
     }
   };
+
+  console.log(isPaymentStart);
 
   useEffect(() => {
     let sum = 0;

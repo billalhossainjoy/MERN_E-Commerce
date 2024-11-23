@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import AuthLayout from "./layout/auth.layout";
 import Login from "./pages/auth/login";
 import SignUp from "./pages/auth/signup";
@@ -27,6 +27,7 @@ import DashboardAccount from "./pages/dashboard/account";
 import DashboardAddress from "./pages/dashboard/address";
 import PaypalReturnPage from "./pages/shopping/checkout/paypal-return";
 import SearchPage from "./pages/shopping/search";
+import AppHomePage from "./pages";
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -55,6 +56,7 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       <Routes>
+        <Route index element={<AppHomePage />} />
         <Route
           path="/auth"
           element={

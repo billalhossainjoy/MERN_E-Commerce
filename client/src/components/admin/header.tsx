@@ -4,7 +4,6 @@ import { setAdminMenu } from "@/store/features/template/slice";
 import CustomButton from "../common/CustomButton";
 import { logoutUser } from "@/store/features/auth/slice";
 
-
 const AdminHeader: React.FC = () => {
   const dispatch = useAppDispatch();
   return (
