@@ -15,6 +15,7 @@ export default defineConfig({
       "/api": {
         target: process.env.VITE_REST_API+"/api",
         changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, ""),
       },
     },
   },
