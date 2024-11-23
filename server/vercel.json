@@ -10,7 +10,7 @@
 
 		{
 			"src":"/(.*)",
-			"dest":"dist/server.js"
+			"dest":"src/server.ts"
 		}
 	]
 }
