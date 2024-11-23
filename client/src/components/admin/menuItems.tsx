@@ -5,6 +5,8 @@ import { useAppDispatch } from "@/store/store";
 import { setAdminMenu } from "@/store/features/template/slice";
 import { LogOut } from "lucide-react";
 import { logoutUser } from "@/store/features/auth/slice";
+import { resetCart } from "@/store/features/cart/cart.slice";
+import { useEffect } from "react";
 
 const MenuItems: React.FC = () => {
   const navigate = useNavigate();
@@ -12,8 +14,16 @@ const MenuItems: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const handler = (path: string) => {
-    if (window.innerWidth <= 768) dispatch(setAdminMenu());
+    if (window.innerWidth <= 768) dispatch(setAdminMenu(false));
     navigate(path);
+  };
+  
+  const logoutHandler = () => {
+    try {
+      dispatch(logoutUser());
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -44,7 +54,7 @@ const MenuItems: React.FC = () => {
       </div>
       <div
         className="md:hidden bg-secondary py-4 px-3 rounded-lg md:rounded-none flex justify-between"
-        onClick={() => dispatch(logoutUser())}
+        onClick={logoutHandler}
       >
         <span>Logout</span>
         <LogOut className="text-primary" />

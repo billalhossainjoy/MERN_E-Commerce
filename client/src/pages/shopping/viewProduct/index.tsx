@@ -11,12 +11,14 @@ import { EMI } from "@/lib/utils";
 import { ProductSchemaType } from "@/schema/product.schema";
 import { addToCart } from "@/store/features/cart/cart.slice";
 import { fetchProduct } from "@/store/features/shopping/product.slice";
-import { useAppDispatch } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const ViewSingleProduct: React.FC = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
   const { toast } = useToast();
   const [data, setData] = useState<ProductSchemaType | null>();
   const [quantity, setQuantity] = useState(1);
@@ -25,6 +27,7 @@ const ViewSingleProduct: React.FC = () => {
   const { id } = useParams();
 
   const addCartHandler = () => {
+    if (!isAuthenticated) navigate("/auth?productId=" + id);
     const productId = data?._id;
     if (productId)
       dispatch(addToCart({ productId, quantity })).then((res) => {
@@ -151,7 +154,13 @@ const ViewSingleProduct: React.FC = () => {
                     className="w-20"
                     min="0"
                   />
-                  <Button onClick={() => setQuantity((prev) => prev + 1)}>
+                  <Button
+                    onClick={() =>
+                      setQuantity((prev) =>
+                        prev >= data.totalStack ? prev : prev + 1
+                      )
+                    }
+                  >
                     +
                   </Button>
                 </div>
@@ -160,6 +169,9 @@ const ViewSingleProduct: React.FC = () => {
                 </CustomButton>
                 <CustomButton>Buy Now</CustomButton>
               </div>
+              {data.totalStack == quantity && (
+                <p className="text-red-500 text-sm">No more available product</p>
+              )}
             </div>
           </div>
         </div>

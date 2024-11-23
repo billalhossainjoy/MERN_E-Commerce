@@ -41,7 +41,7 @@ const ShoppingListing: React.FC = () => {
     );
     setFilterProducts(filters);
     setReady(true);
-  }, []);
+  }, [searchParams]);
 
   useEffect(() => {
     const searchFilters = Object.keys(filterProducts);
@@ -52,9 +52,7 @@ const ShoppingListing: React.FC = () => {
       });
       setSearchParams(searchParams);
     }
-  }, [filterProducts, searchParams, setSearchParams]);
-
-
+  }, [filterProducts, searchParams, setSearchParams])
 
   return (
     <div className=" bg-white grid grid-cols-1 md:grid-cols-[300px_1fr] gap-6 p-4 md:p-6 h-auto">
@@ -66,7 +64,9 @@ const ShoppingListing: React.FC = () => {
         <div className="p-4 border-b flex items-center justify-between">
           <h2 className="text-lg font-bold">All products</h2>
           <div className="flex items-center gap-3">
-            <span className="text-muted-foreground">10 Products</span>{" "}
+            <span className="text-muted-foreground">
+              {ProductLists.length} Products
+            </span>{" "}
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <CustomButton variant="outline" className="flex gap-2">

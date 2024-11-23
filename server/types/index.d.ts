@@ -8,3 +8,4 @@ export interface FileType {
   buffer: Buffer;
   size: number;
 }
+

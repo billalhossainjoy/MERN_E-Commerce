@@ -8,7 +8,6 @@ import AdminFeatures from "./pages/admin/features";
 import AdminOrders from "./pages/admin/orders";
 import ShoppingLayout from "./layout/shopping.layout";
 import NotFound from "./pages/not-found";
-import ShoppingAccount from "./pages/shopping/account";
 import ShoppingHome from "./pages/shopping/home";
 import ShoppingListing from "./pages/shopping/listing";
 import ShoppingCheckOut from "./pages/shopping/checkout";
@@ -21,6 +20,13 @@ import { Loader } from "lucide-react";
 import AdminProducts from "./pages/admin/products";
 import AddProduct from "./pages/admin/new-product";
 import ViewSingleProduct from "./pages/shopping/viewProduct";
+import DashboardLayout from "./layout/dashboard.layout";
+import DashboardOrder from "./pages/dashboard/order";
+import DashboardSettings from "./pages/dashboard/profile";
+import DashboardAccount from "./pages/dashboard/account";
+import DashboardAddress from "./pages/dashboard/address";
+import PaypalReturnPage from "./pages/shopping/checkout/paypal-return";
+import SearchPage from "./pages/shopping/search";
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -79,14 +85,20 @@ const App: React.FC = () => {
         <Route path="/shopping" element={<ShoppingLayout />}>
           <Route index element={<ShoppingHome />} />
           <Route
-            path="account"
+            path="dashboard"
             element={
               <Protected auth={isAuthenticated} user={user}>
-                <ShoppingAccount />
+                <DashboardLayout />
               </Protected>
             }
-          />
+          >
+            <Route path="order" element={<DashboardOrder />} />
+            <Route path="settings" element={<DashboardSettings />} />
+            <Route path="account" element={<DashboardAccount />} />
+            <Route path="address" element={<DashboardAddress />} />
+          </Route>
           <Route path="listing" element={<ShoppingListing />} />
+          <Route path="search" element={<SearchPage />} />
           <Route path="listing/product/:id" element={<ViewSingleProduct />} />
           <Route
             path="checkout"
@@ -96,8 +108,15 @@ const App: React.FC = () => {
               </Protected>
             }
           />
+          <Route
+            path="paypal-return"
+            element={
+              <Protected auth={isAuthenticated} user={user}>
+                <PaypalReturnPage />
+              </Protected>
+            }
+          />
         </Route>
-
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />

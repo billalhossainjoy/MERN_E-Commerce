@@ -19,7 +19,7 @@ const AdminHeader: React.FC = () => {
       </div>
       <CustomButton
         className="block md:hidden "
-        onClick={() => dispatch(setAdminMenu())}
+        onClick={() => dispatch(setAdminMenu(false))}
       >
         <AlignJustify />
       </CustomButton>

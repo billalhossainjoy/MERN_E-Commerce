@@ -15,6 +15,7 @@ import {
   SelectItem,
   SelectValue,
 } from "../ui/select";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 
 interface RenderFeildProps<T extends FieldValues> {
   props: FormFieldProps<T>;
@@ -128,6 +129,26 @@ const RenderFormField = <T extends FieldValues>({
       return renderSkeleton && renderSkeleton(field);
     case FormFieldType.UPLOAD:
       return;
+    case FormFieldType.RADIO:
+      return (
+        <FormControl>
+          <RadioGroup
+            className="flex"
+            value={field.value}
+            onValueChange={field.onChange}
+          >
+            {options?.map((option, index) => (
+              <Label
+                key={index}
+                className="p-5 bg-gray-50 rounded-lg flex gap-2"
+              >
+                <RadioGroupItem value={option.id} />
+                <span>{option.label}</span>
+              </Label>
+            ))}
+          </RadioGroup>
+        </FormControl>
+      );
   }
 };
 

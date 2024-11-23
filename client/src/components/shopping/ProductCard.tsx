@@ -6,7 +6,7 @@ import CustomButton from "../common/CustomButton";
 import { useRef, useState } from "react";
 import { X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { addToCart } from "@/store/features/cart/cart.slice";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -17,6 +17,7 @@ interface Props {
 }
 
 const ShoppingProductCard: React.FC<Props> = ({ product }) => {
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
   const { toast } = useToast();
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
@@ -38,6 +39,8 @@ const ShoppingProductCard: React.FC<Props> = ({ product }) => {
   };
 
   const handleCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (!isAuthenticated) navigate("/auth?productId=" + product._id);
+
     e.stopPropagation();
     dispatch(addToCart({ productId: product._id!, quantity })).then((res) => {
       toast({
@@ -90,7 +93,7 @@ const ShoppingProductCard: React.FC<Props> = ({ product }) => {
         </CardContent>
         <CardFooter className="flex justify-end">
           <CustomButton
-            className="z-50 relative cursor-cell"
+            className="z-50 relative cursor-pointer"
             onClick={(e) => handleCart(e)}
           >
             Add To Cart
@@ -172,11 +175,14 @@ const ShoppingProductCard: React.FC<Props> = ({ product }) => {
                         className="w-20"
                         min="0"
                       />
-                      <Button onClick={() => setQuantity((prev) => prev + 1)}>
+                      <Button onClick={() => setQuantity((prev) => prev >= product.totalStack ? prev : prev + 1)}>
                         +
                       </Button>
                     </div>
-                    <CustomButton onClick={(e) => handleCart(e)}>
+                    <CustomButton
+                      onClick={(e) => handleCart(e)}
+                      disabled={product.totalStack == 0}
+                    >
                       Add to Cart
                     </CustomButton>
                     <CustomButton>Buy Now</CustomButton>

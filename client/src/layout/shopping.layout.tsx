@@ -6,7 +6,7 @@ const ShoppingLayout: React.FC = () => {
   return (
     <div className="flex flex-col bg-secondary overflow-hidden h-screen">
       <ShoppingHeader />
-      <main className="overflow-auto remove-scrollbar h-full  ">
+      <main className="overflow-auto remove-scrollbar h-full">
         <Outlet />
         <CartSheet />
       </main>

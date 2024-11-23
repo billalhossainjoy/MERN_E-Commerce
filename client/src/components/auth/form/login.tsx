@@ -11,11 +11,14 @@ import AuthProviders from "../AuthProviders";
 import { loginUser } from "@/store/features/auth/slice";
 import { useAppDispatch } from "@/store/store";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate, useSearchParams } from "react-router-dom";
 export type LoginSchemaType = z.infer<typeof loginSchema>;
 
 const LoginForm: React.FC = () => {
   const { toast } = useToast();
   const dispatch = useAppDispatch();
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const form = useForm<LoginSchemaType>({
     resolver: zodResolver(loginSchema),
@@ -29,6 +32,10 @@ const LoginForm: React.FC = () => {
           className:
             "md:bg-transparent border-primary border text-primary shadow-md shadow-primary",
         });
+        if (searchParams.get("productId"))
+          navigate(
+            "/shopping/listing/product/" + searchParams.get("productId")
+          );
       } else {
         if (res.payload.error && res.payload.error.field)
           form.setError("password", { message: res.payload.message });

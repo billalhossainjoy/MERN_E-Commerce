@@ -2,7 +2,7 @@ export const shoppingHeaderMenu = [
   {
     id: "home",
     label: "Home",
-    path: "/shopping/listing",
+    path: "/shopping",
   },
   {
     id: "men",

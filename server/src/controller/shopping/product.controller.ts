@@ -54,7 +54,7 @@ export const FetchAllProducts = Asynchandler(async (req, res) => {
         break;
     }
 
-    const products = await ProductModel.find(filters, projection).sort(sort);
+    const products = await ProductModel.find(filters).sort(sort);
 
     return ResponseApi(res, 200, "Get all products.", products);
   } catch (error) {
@@ -75,5 +75,31 @@ export const FetchProduct = Asynchandler(async (req, res) => {
     return ResponseApi(res, 200, "Get all products.", product);
   } catch (error) {
     throw error;
+  }
+});
+
+export const searchProduct = Asynchandler(async (req, res) => {
+  try {
+    const { keyword } = req.params;
+    if (!keyword || typeof keyword !== "string")
+      throw new ErrorApi(401, "Invalid keyword");
+
+    const regEx = new RegExp(keyword, "i");
+    const createSearchQuery = {
+      $or: [
+        { title: regEx },
+        { description: regEx },
+        { category: regEx },
+        { brand: regEx },
+      ],
+    };
+    const searchResults = await ProductModel.find(createSearchQuery)
+
+    console.log(searchProduct)
+
+    return ResponseApi(res, 200, "Search products.", searchResults);
+
+  } catch (error) {
+    console.log(error);
   }
 });

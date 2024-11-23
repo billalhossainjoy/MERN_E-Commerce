@@ -9,6 +9,7 @@ import {
 } from "../ui/dropdown-menu";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "@/store/features/auth/slice";
+import { resetCart } from "@/store/features/cart/cart.slice";
 
 interface Props {
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,6 +19,13 @@ const ProfileMenu: React.FC<Props> = ({ setMenuOpen }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { user } = useAppSelector((state) => state.auth);
+
+  const logoutHandler = () => {
+    dispatch(logoutUser()).then(() => {
+      dispatch(resetCart());
+      navigate("/shopping");
+    });
+  };
 
   return (
     <DropdownMenu>
@@ -30,7 +38,7 @@ const ProfileMenu: React.FC<Props> = ({ setMenuOpen }) => {
         <DropdownMenuLabel>Logn as {user?.data.username}</DropdownMenuLabel>
         <DropdownMenuItem
           onClick={() => {
-            navigate("/shopping/account");
+            navigate("/shopping/dashboard/account");
             setMenuOpen(false);
           }}
         >
@@ -38,9 +46,7 @@ const ProfileMenu: React.FC<Props> = ({ setMenuOpen }) => {
         </DropdownMenuItem>
         <DropdownMenuSeparator className="hidden lg:block" />
         <DropdownMenuItem
-          onClick={() =>
-            dispatch(logoutUser()).then(() => navigate("/shopping"))
-          }
+          onClick={logoutHandler}
           className="text-destructive hidden lg:block"
         >
           Logout

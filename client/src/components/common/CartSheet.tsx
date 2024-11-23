@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import { setCartOpen } from "@/store/features/template/slice";
 import { fetchCarts } from "@/store/features/cart/cart.slice";
 import CartItems from "../shopping/cartItems";
+import { useNavigate } from "react-router-dom";
 
 const CartSheet: React.FC = () => {
+  const navigate = useNavigate()
   const [total, setTotal] = useState(0);
   const { cart } = useAppSelector((state) => state.template);
   const { cartItems } = useAppSelector((state) => state.productCart);
@@ -27,6 +29,11 @@ const CartSheet: React.FC = () => {
     console.log();
   }, [total, setTotal, cartItems]);
 
+  const checkOutHandler = () => {
+    dispatch(setCartOpen(false));
+    navigate('/shopping/checkout');
+  };
+
   return (
     <>
       <Sheet open={cart} onOpenChange={() => dispatch(setCartOpen(false))}>
@@ -41,7 +48,12 @@ const CartSheet: React.FC = () => {
                 <span>Total:</span>
                 <span>${total}</span>
               </div>
-              <CustomButton className="w-full">Checkout</CustomButton>
+              <CustomButton
+                className="w-full"
+                onClick={() => checkOutHandler()}
+              >
+                Checkout
+              </CustomButton>
             </div>
           ) : (
             <div className="w-full h-full flex justify-center items-center">

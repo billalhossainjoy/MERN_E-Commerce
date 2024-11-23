@@ -15,7 +15,7 @@ const initialState: InitialState = {
 };
 
 export const fetchShoppingProducts = createAsyncThunk(
-  "/admin/shoppng/products",
+  "/shopping/products",
   async (params: FatchPerameterType) => {
     const query = new URLSearchParams();
     Object.keys(params.filter).forEach((key) =>
@@ -30,6 +30,7 @@ export const fetchShoppingProducts = createAsyncThunk(
     return res.data;
   }
 );
+
 export const fetchProduct = createAsyncThunk(
   "/shopping/product",
   async (id: string) => {

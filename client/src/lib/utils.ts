@@ -12,3 +12,4 @@ export const toCapitalize = (str: string) => {
 export const EMI = (price: number | string = 0) => {
   return Number(price) + Number(price) * 0.052;
 };
+

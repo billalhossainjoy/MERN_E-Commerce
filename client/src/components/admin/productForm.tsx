@@ -167,7 +167,7 @@ const ProductForm: React.FC<Props> = ({ product, newForm = true }) => {
                     />
                   }
 
-                  {product?.images && (
+                  {product?.images && product.images.length > 0 && (
                     <div className="w-full">
                       <div className="grid grid-cols-5 gap-2 w-full h-40 overflow-hidden ">
                         {product.images.map((image, index) => (

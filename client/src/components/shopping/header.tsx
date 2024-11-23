@@ -9,6 +9,7 @@ import ProfileMenu from "./ProfileMenu";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import LogoutButton from "./logoutButton";
 import { setCartOpen } from "@/store/features/template/slice";
+import Search from "../common/search";
 
 const ShoppingHeader: React.FC = () => {
   const navigate = useNavigate();
@@ -33,7 +34,10 @@ const ShoppingHeader: React.FC = () => {
         <div className="hidden lg:block">
           <ShoppingNav setMenuOpen={setMenuOpen} />
         </div>
+
         <div className="flex gap-3">
+          {" "}
+          <Search />
           <CustomButton
             className="flex items-center gap-2"
             onClick={() => dispatch(setCartOpen(true))}
@@ -58,6 +62,7 @@ const ShoppingHeader: React.FC = () => {
             </CustomButton>
           )}
         </div>
+
         <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
           <SheetContent
             side="left"
