@@ -146,10 +146,18 @@ const shoppingOrderSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(captureOrder.fulfilled, (state) => {
-        state = initialState;
+        state.approvalUrl = null;
+        state.isLoading = false;
+        state.order = null;
+        state.orderDetails = null;
+        state.orderLists = [];
       })
       .addCase(captureOrder.rejected, (state) => {
-        state = initialState;
+        state.approvalUrl = null;
+        state.isLoading = false;
+        state.order = null;
+        state.orderDetails = null;
+        state.orderLists = [];
       });
 
     builder
