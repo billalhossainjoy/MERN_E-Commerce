@@ -10,7 +10,6 @@ import {
   categoriesWithIcon,
 } from "@/components/admin/constants";
 import { useAppDispatch, useAppSelector } from "@/store/store";
-import { fetchAllProducts } from "@/store/features/admin/product.slice";
 import { fetchShoppingProducts } from "@/store/features/shopping/product.slice";
 import ShoppingProductCard from "@/components/shopping/ProductCard";
 import { useNavigate } from "react-router-dom";

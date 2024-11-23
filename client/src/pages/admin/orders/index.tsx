@@ -1,5 +1,4 @@
 import AdminOrderDetails from "@/components/admin/order-details";
-import UserorderLists from "@/components/shopping/Dashboard/order-details";
 import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";

@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Form } from "../../ui/form";
-import { z, ZodError } from "zod";
+import { z } from "zod";
 import { signUpSchema } from "@/schema/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import CustomForm from "../../common/FormField";

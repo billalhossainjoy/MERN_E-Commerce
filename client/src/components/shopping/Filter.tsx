@@ -2,7 +2,6 @@ import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";
 import { Separator } from "../ui/separator";
 import { filterOptions } from "./constants";
-import { useState } from "react";
 
 interface Props {
   filterProducts: FilterType;

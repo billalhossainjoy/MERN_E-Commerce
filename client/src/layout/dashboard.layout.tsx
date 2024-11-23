@@ -1,6 +1,6 @@
 import DashboardSideBar from "@/components/shopping/Dashboard/sideBar";
 import { Menu } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 const DashboardLayout: React.FC = () => {

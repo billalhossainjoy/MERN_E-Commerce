@@ -12,7 +12,7 @@ const AdminSideBar: React.FC = () => {
 
   return (
     <>
-      <Sheet open={open} onOpenChange={() => dispatch(setAdminMenu())}>
+      <Sheet open={open} onOpenChange={(e) => dispatch(setAdminMenu(e))}>
         <SheetContent className="" side={"left"}>
           <div className="flex flex-col gap-4 h-full">
             <SheetHeader>

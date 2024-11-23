@@ -145,8 +145,12 @@ const shoppingOrderSlice = createSlice({
       .addCase(captureOrder.pending, (state) => {
         state.isLoading = false;
       })
-      .addCase(captureOrder.fulfilled, (state) => (state = initialState))
-      .addCase(captureOrder.rejected, (state) => (state = initialState));
+      .addCase(captureOrder.fulfilled, (state) => {
+        state = initialState;
+      })
+      .addCase(captureOrder.rejected, (state) => {
+        state = initialState;
+      });
 
     builder
       .addCase(getDashboardOrders.pending, (state) => {
@@ -203,7 +207,7 @@ const shoppingOrderSlice = createSlice({
         const index = state.orderLists.findIndex(
           (order) => order._id === action.payload.data._id
         );
-        if (index!== -1) state.orderLists[index] = action.payload.data;
+        if (index !== -1) state.orderLists[index] = action.payload.data;
       })
       .addCase(updateOrderStatus.rejected, (state) => {
         state.isLoading = false;

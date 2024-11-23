@@ -5,8 +5,6 @@ import { useAppDispatch } from "@/store/store";
 import { setAdminMenu } from "@/store/features/template/slice";
 import { LogOut } from "lucide-react";
 import { logoutUser } from "@/store/features/auth/slice";
-import { resetCart } from "@/store/features/cart/cart.slice";
-import { useEffect } from "react";
 
 const MenuItems: React.FC = () => {
   const navigate = useNavigate();

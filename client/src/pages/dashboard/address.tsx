@@ -4,7 +4,6 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import {
   deleteAddress,
-  editAddress,
   fetchAllAddress,
 } from "@/store/features/address/slice";
 import { useAppDispatch, useAppSelector } from "@/store/store";

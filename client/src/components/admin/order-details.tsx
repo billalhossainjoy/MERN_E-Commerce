@@ -10,7 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { useAppDispatch, useAppSelector } from "@/store/store";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import {
   getAdminOrderDetails,
   resetOrderDetails,
@@ -25,7 +25,6 @@ interface Props {
 }
 
 const AdminOrderDetails: React.FC<Props> = ({setOrderView}) => {
-  const navigate = useNavigate();
   const [orderStatus, setOrderStatus] = useState("");
 
   const dispatch = useAppDispatch();

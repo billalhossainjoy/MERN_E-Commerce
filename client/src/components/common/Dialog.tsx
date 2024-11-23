@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
-import CustomButton from "./CustomButton";
+import { Dialog, DialogContent } from "../ui/dialog";
 
 interface Props {
   children: React.ReactNode;

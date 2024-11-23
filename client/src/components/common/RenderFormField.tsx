@@ -3,7 +3,7 @@ import { FormFieldProps } from "./FormField";
 import { FormControl } from "../ui/form";
 import { Input } from "../ui/input";
 import { FormFieldType } from "@/constant";
-import { EyeIcon, EyeOff, Trash2, UploadCloud } from "lucide-react";
+import { EyeIcon, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";

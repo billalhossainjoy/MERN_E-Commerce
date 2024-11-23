@@ -2,7 +2,6 @@ import { logoutUser } from "@/store/features/auth/slice";
 import { resetCart } from "@/store/features/cart/cart.slice";
 import { useAppDispatch } from "@/store/store";
 import { LogOut } from "lucide-react";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LogoutButton: React.FC = () => {

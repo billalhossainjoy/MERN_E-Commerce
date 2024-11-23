@@ -22,7 +22,6 @@ const Search: React.FC = () => {
       dispatch(searchProduct(searchKeyWord));
   }, [searchKeyWord, dispatch]);
 
-  console.log(open);
 
   useEffect(() => {
     if (pathname === "/shopping/search") setOpen(true);

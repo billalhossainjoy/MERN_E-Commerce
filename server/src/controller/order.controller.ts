@@ -110,7 +110,7 @@ const capturePayment = Asynchandler(async (req, res) => {
       _id: Types.ObjectId;
     }) => {
       const product = await ProductModel.findById(item.productId);
-      if (!product) return
+      if (!product) return;
 
       await ProductModel.findByIdAndUpdate(
         item.productId,
@@ -123,6 +123,7 @@ const capturePayment = Asynchandler(async (req, res) => {
 
     (async () => {
       for (const item of order.cart.items) {
+        if (!item) return;
         await decrementProduct(item);
       }
     })();

@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import { getDashboardOrders } from "@/store/features/shopping/order.slice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const DashboardOrder: React.FC = () => {
   const [orderView, setOrderView] = useState(false);

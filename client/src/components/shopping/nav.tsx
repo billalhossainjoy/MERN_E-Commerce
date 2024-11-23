@@ -1,7 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { shoppingHeaderMenu } from "./constants";
 import { Label } from "../ui/label";
-import Search from "../common/search";
 
 interface Props {
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;

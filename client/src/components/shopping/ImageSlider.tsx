@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
+import {useState } from "react";
 import { Button } from "../ui/button";
-import { useEffect, useState } from "react";
 
 interface Props {
   images: string[];
@@ -55,13 +55,13 @@ const ImageSlider: React.FC<Props> = ({ images }) => {
 
       <div className="space-x-2 absolute bottom-4 w-full text-center">
         {images.map((_, index) => (
-          <button
+          <Button
             key={index}
             className={cn("h-3 w-3 rounded-full bg-gray-600/30 ", {
               "bg-gray-900": index === currentImage,
             })}
             onClick={() => moveIndex(index)}
-          ></button>
+          ></Button>
         ))}
       </div>
     </div>
