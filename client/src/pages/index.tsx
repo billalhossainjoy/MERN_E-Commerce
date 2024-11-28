@@ -12,7 +12,7 @@ const AppHomePage: React.FC = () => {
         <div className="flex items-center">
           <Orbit className="text-primary w-6 h-6" />
           <h1 className="font-bold text-lg">
-            Admin <span className="text-primary">panel</span>
+            Tech <span className="text-primary">shop</span>
           </h1>
         </div>
       </div>
