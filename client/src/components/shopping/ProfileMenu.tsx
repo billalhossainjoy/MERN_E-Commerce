@@ -31,7 +31,7 @@ const ProfileMenu: React.FC<Props> = ({ setMenuOpen }) => {
     <DropdownMenu>
       <DropdownMenuTrigger className="!outline-none">
         <div className="bg-primary rounded-full w-8 h-8 text-white flex justify-center items-center !border-none">
-          {user?.data.username[0].toUpperCase()}
+          {user?.data?.username[0].toUpperCase()}
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className=" mx-5">
