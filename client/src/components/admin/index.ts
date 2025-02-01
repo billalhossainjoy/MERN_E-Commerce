@@ -1,12 +1,6 @@
-import { ShoppingBasket, Gauge, Tag } from "lucide-react";
+import { ShoppingBasket, Tag } from "lucide-react";
 
 export const adminSidebarMenuItems = [
-  {
-    id: "dashboard",
-    label: "Dashboard",
-    path: "/admin",
-    icon: Gauge,
-  },
   {
     id: "products",
     label: "Products",

@@ -10,6 +10,8 @@ import shoppingProduct from "./router/shopping/product.router";
 import cartRouter from "./router/cart.router";
 import addressRouter from "./router/address.router";
 import orderRouter from "./router/order.router";
+import dotenv from 'dotenv'
+dotenv.config()
 
 const app: Application = express();
 
@@ -28,7 +30,7 @@ app.use(express.static(path.join(__dirname, "../public/")));
 // Routes
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
-app.use("/api/product", productRouter);
+app.use("/api/admin/product", productRouter);
 app.use("/api/shopping", shoppingProduct);
 app.use("/api/cart", cartRouter);
 app.use("/api/address", addressRouter);
