@@ -1,7 +1,7 @@
 <div>
-  <div>
-    <h1 style="text-align: center;">MERN E-Commerce application.</h1>
-    <div style="display: flex; justify-content: center">
+  <div align="center">
+    <h1>MERN E-Commerce application.</h1>
+    <div>
       <img src="./readme/images/typescript.svg" alt="" />
       <img src="./readme/images/react.svg" alt="" />
       <img src="./readme/images/tailwind.svg" alt="" />
