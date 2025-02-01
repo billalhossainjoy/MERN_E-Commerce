@@ -81,7 +81,7 @@
 
   <div>
 	<h1>Maintain uploaded files delete or add new file</h1>
-    <img src="./readme/screenshots/update-poroduct.PNG" alt=""/>
+    <img src="./readme/screenshots/update-poroduct.png" alt=""/>
   </div>
 
   <div>
